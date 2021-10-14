@@ -1,6 +1,7 @@
 import json 
 import numpy 
-import pandas 
+import pandas
+from scrape_api import response 
 
 js = open('data.json',) 
 data = json.load(js) 
