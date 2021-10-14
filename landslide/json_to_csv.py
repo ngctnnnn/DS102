@@ -3,7 +3,7 @@ import numpy
 import pandas
 from scrape_api import response 
 
-js = open('data.json',) 
+js = open('weather.json',) 
 data = json.load(js) 
 name_column = [] 
 final_result = [] 
