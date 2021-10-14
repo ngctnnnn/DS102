@@ -1,9 +1,8 @@
 import json 
 import numpy 
 import pandas
-from scrape_api import response 
 
-js = open('weather.json',) 
+js = open('data/weather.json',) 
 data = json.load(js) 
 name_column = [] 
 final_result = [] 
