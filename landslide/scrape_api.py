@@ -5,7 +5,7 @@ from tqdm import tqdm
 from constant import api_key, feature
 
 """ Create a checkpoint after running"""
-checkpoint = 5899 
+checkpoint = 10899 
 
 
 def main(api, api_key, feature):
