@@ -7,27 +7,29 @@ def push_csv(direct_csv='./data/weather.csv', direct_json='./data/tmp_weather.js
     data = json.load(file_json_tmp_weather) 
     prefix_row = [] 
     rows = []
-    for primary_key in data: 
-        if primary_key != 'days' and primary_key != 'stations': 
+    for primary_key in data:  
+        if primary_key != 'days' and primary_key != 'stations':  
             prefix_row.append(data[primary_key])
             pass
 
         if primary_key == 'days': 
             for key in data['days'][0]: 
-                if key != 'stations' and key != 'normal': 
+                if key != 'stations' and key != 'normal':  
                     prefix_row.append(data['days'][0][key])
             pass
 
         if primary_key == 'stations': 
-            for key_station in data['stations']: 
-                row = prefix_row.copy()
-                row.append(key_station)
+            pass
+        #     for key_station in data['stations']: 
+        #         row = prefix_row.copy()
+        #         row.append(key_station)
 
-                for key in data['stations'][key_station]: 
-                    row.append(data['stations'][key_station][key])
+        #         for key in data['stations'][key_station]: 
+        #             row.append(data['stations'][key_station][key])
 
-                rows.append(row)
-            pass  
+        #         rows.append(row)
+        #     pass   
+    rows.append(prefix_row) 
     return rows  
 
 
@@ -36,8 +38,7 @@ def make_name_column():
         "queryCost","latitude","longitude","resolvedAddress","address","timezone","tzoffset",
         "feelslikemax","feelslikemin","feelslike","dew","humidity","precip","precipprob","precipcover",
         "preciptype","snow","snowdepth","windgust","windspeed","winddir","pressure","cloudcover",
-        "visibility","solarradiation","solarenergy","uvindex","moonphase","conditions","description","icon",
-        "stations", "distance","latitude","longitude", "useCount","id","name","quality","contribution"
+        "visibility","solarradiation","solarenergy","uvindex","moonphase","conditions","description","icon" 
     ]
     return name
 
@@ -48,6 +49,8 @@ if __name__=='__main__':
     table = []  
 
     table.append(make_name_column())
+ 
+
     for line_json_weather in file_json_weather:  
         if len(line_json_weather) > 0: 
             new_json.append(line_json_weather)
@@ -69,6 +72,6 @@ if __name__=='__main__':
                 
                 for row in row_csv: 
                     table.append(row)
-              
+ 
 
     pd.DataFrame(table).to_csv("./data/weather.csv", header=None, index=False) 
